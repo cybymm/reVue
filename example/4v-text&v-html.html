@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/js/vue.min.js"></script>
+    <script src="../assets/js/vue.js"></script>
+    <title>v-text&v-html</title>
+</head>
+
+<body>
+    <div id="app">
+        <li>{{msg}}</li> = <li v-text="msg"></li><br>
+        <li>{{msghtml}}</li><br>
+        <li v-text="msghtml"></li><br>
+        <li v-html="msghtml">我是v-html输出的</li>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: "有时会加载不出来",
+                msghtml: "<span>我带有html标签，用v-text输不出来,会把标签输出</span>"
+            }
+        })
+    </script>
+</body>
+
+</html>

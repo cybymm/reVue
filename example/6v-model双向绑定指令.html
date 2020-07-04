@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/js/vue.min.js"></script>
+    <script src="../assets/js/vue.js"></script>
+    <title>双向绑定指令</title>
+</head>
+
+<body>
+    <div id="app">
+        <h2>v-model双向绑定指令</h2>
+        <p>原始文本信息：{{msg}}</p>
+        <h3>文本框</h3>
+        <p>v-model:<input type="text" v-model="msg"></p>
+        <p>v-model:<input type="text" v-model.lazy="msg"></p>
+        <p>v-model:<input type="text" v-model.number="msg"></p>
+        <p>v-model:<input type="text" v-model.trim="msg"></p>
+        <hr>
+        <textarea name="" id="" cols="30" rows="10" v-model="msg"></textarea>
+        <hr>
+        <h2>多选框绑定一个值</h2>
+        <input type="checkbox" id="ckeck" v-model="isTrue">
+        <label for="isTrue">{{isTrue}}</label><hr>
+        <h2>多选按钮绑定一个数组</h2>
+        <input type="checkbox" name="" id="one" value="math" v-model="Names">
+        <label for="Names">math</label><br>
+        <input type="checkbox" name="" id="two" value="OS" v-model="Names">
+        <label for="Names">OS</label><br>
+        <input type="checkbox" name="" id="three" value="English" v-model="Names">
+        <label for="Names">English</label><br>
+        <p>所选择的科目：{{Names}}</p><hr>
+        <h2>单选按钮绑定事件</h2>
+        <input type="radio" id="one" value="男" v-model="sex">
+        <label for="sex">男</label>
+        <input type="radio" id="two" value="女" v-model="sex">
+        <label for="sex">女</label>
+        <p>当前选择的性别是：{{sex}}</p>
+    </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: "我是原始信息",
+                isTrue:true,
+                Names:[],
+                sex:'男'
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

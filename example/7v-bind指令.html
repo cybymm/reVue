@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/js/vue.min.js"></script>
+    <script src="../assets/js/vue.js"></script>
+    <title>v-bind指令</title>
+    <style>
+        .classA{
+            color: brown;
+        }
+        .classB{
+            font-size: 60px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>v-bind指令/</h1>
+        <hr>
+        <div>
+            <p>这是没有动态赋值的图片</p>
+            <img src="http://a2.att.hudong.com/36/48/19300001357258133412489354717.jpg" alt="">
+        </div>
+        <div>
+            <p>这是进行了动态赋值的图片</p>
+            <img v-bind:src="imgSrc" alt="">
+        </div>
+        <div :class="className">1、直接绑定css样式 classA</div>
+        <div :class="{classA:isOK}">2、绑定class中的判断</div>
+        <div>
+            <input type="checkbox" name="" id="isOK" v-model="isOK">
+            <label for="isOK">isOK={{isOK}}</label>
+        </div>
+        <div :class="[classA,classB]">3、绑定class中的数组</div>
+        <div :class="isOK?classA:classB">4、绑定class中使用三元表达式判断</div>
+        <div :style="{color:green,fontSize:font}">5、绑定style样式</div>
+        <div :style="styleObj">6、用对象绑定style样式</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                imgSrc: "http://a2.att.hudong.com/36/48/19300001357258133412489354717.jpg",
+                className:"classA",
+                isOK:false,
+                classA:'classA',
+                classB:'classB',
+                green:'green',
+                font:45+'px',
+                styleObj:{
+                    color:'#0ff',
+                    fontSize:50+'px'
+                }
+         }
+        })
+    </script>
+</body>
+
+</html>

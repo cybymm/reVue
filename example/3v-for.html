@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../assets/js/vue.min.js"></script>
+    <script src="../assets/js/vue.js"></script>
+    <title>v-for</title>
+    <style>
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p>没有排序：</p>
+        <ul>
+            <li v-for="item in items">{{item}}</li>
+        </ul>
+        <br>
+        <p>sort排序（有bug）：</p>
+        <ul>
+            <li v-for="item in sortItems">{{item}}</li>
+        </ul>
+        <br>
+        <p>sort排序：</p>
+        <ul>
+            <li v-for="item in ResortItems">{{item}}</li>
+        </ul>
+        <hr>
+        <p>对象循环输出：</p>
+        <ul>
+            <li v-for="obj in object">
+                {{obj.name}}--{{obj.gread}}
+            </li>
+        </ul>
+        <p>对象循环输出(数组对象方法排序)：</p>
+        <ul>
+            <li v-for="obj in sortObject">
+                {{obj.name}}--{{obj.gread}}
+            </li>
+        </ul>
+
+    </div>
+   <script>
+        var app = new Vue({
+       el:"#app",
+       data:{
+          items:[1,23,12,34,21,112],
+          object:[
+              {name:'OS',gread:88},
+              {name:'English',gread:80},
+              {name:'Math',gread:90}
+          ]
+       },
+       computed:{
+           sortItems:function(){
+               return this.items.sort();
+           },
+           ResortItems:function(){
+               return this.items.sort(sortNumber)
+           },
+           sortObject:function(){
+               return sortByKey(this.object,'gread');
+           }
+       }
+   })
+   function sortNumber(a,b){
+       return a-b;
+   }
+   function sortByKey(array,key){
+       return array.sort(function(a,b){
+           var x = a[key];
+           var y = b[key];
+           return ((x<y)?-1:(x>y)?1:0);
+       })
+   }
+   </script>
+</body>
+</html>
